@@ -1,6 +1,7 @@
 import styles from './index.module.scss';
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from 'react'
+import Event from '../../Components/Event'
 
 
 export default function Location({locations}){
@@ -39,7 +40,9 @@ export default function Location({locations}){
         <h3>{location?.currencyCode}</h3>
       </div>
       <div className="">
-        
+        {events.map(item => {
+          return <Event key={item.id} item={item}/>
+        })}
       </div>
     
       
