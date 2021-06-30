@@ -37,7 +37,6 @@ function App() {
     loadLocations()
   },[])
 
-  console.log('==App',countries)
   return (
     <div className="App">
       <Router>
@@ -50,8 +49,8 @@ function App() {
             </Route>
           </Switch>
         </main>
+        <Footer locations={locations}/>
       </Router>
-    <Footer/>
     </div>
   );
 }
