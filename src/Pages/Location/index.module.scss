@@ -1,28 +1,6 @@
-.header{
-  height: 100px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
+.location{
+  padding: 5%;
 }
-.locationsDropdown{
-  cursor: pointer;
-  position: relative;
-  &:hover .countriesList{
-      display: block;
-  }
-}
-.countriesList{
-  display: none;
-  position: absolute;
-  right: 0;
-  height: 200px;
-  overflow: auto;
-  border: 1px solid #000;
-  background-color: #fff;
-  list-style-type: none;
-  text-align: center;
-  padding: 0 10px;
-  li{
-    padding: 5px;
-  }
+.events{
+  flex-wrap: wrap;
 }

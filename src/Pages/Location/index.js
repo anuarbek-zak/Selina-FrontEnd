@@ -28,18 +28,18 @@ export default function Location({locations}){
 
   console.log('data',events,location)
   return (
-    <div>
-      <h1>Location:</h1>
+    <div className={styles.location}>
       <div>
-        <h2>{location?.name}</h2>
-        <h2>{location?.description}</h2>
-        <h3>{location?.startDate}</h3>
-        <h3>{location?.endDate}</h3>
-        <h3>{location?.price}</h3>
-        <h3>{location?.type}</h3>
-        <h3>{location?.currencyCode}</h3>
+        <h1>{location?.name}</h1>
+        <h3>{location?.description}</h3>
+        <h4>{location?.startDate}</h4>
+        <h4>{location?.endDate}</h4>
+        <h4>{location?.price}</h4>
+        <h4>{location?.type}</h4>
+        <h4>{location?.currencyCode}</h4>
       </div>
-      <div className="">
+      <h2> Events :</h2>
+      <div className={`${styles.events} flex jc-sb`}>
         {events.map(item => {
           return <Event key={item.id} item={item}/>
         })}

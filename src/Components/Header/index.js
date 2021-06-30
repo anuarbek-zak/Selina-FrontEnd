@@ -28,7 +28,7 @@ export default function Header({countries}){
   }
 
   return (
-    <header className={`${styles.header}`}>
+    <header className={`${styles.header} flex jc-sb ai-c`}>
       <Link to="/">
         <img src={'https://www.selina.com/static/media/selina_logo_black.b62a0982.svg'} className={styles.logo} alt="Selina" />
       </Link>

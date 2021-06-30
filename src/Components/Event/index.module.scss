@@ -1,5 +1,6 @@
 .event{
-	width: 32%;
+	width: 30%;
+	min-width: 200px;
 	margin-bottom: 20px;
 	cursor: pointer;
   transition:.5s 
@@ -13,10 +14,10 @@
 .event.active  .event-inner h4{
 	color: #fff;
 }
-.event:hover .event-inner{
+.event .event-inner{
 	background-color: #31363C;
 }
-.event:hover .event-inner h4{
+.event .event-inner h4{
 	color: #fff;
 }
 .event .bg-img{
@@ -38,7 +39,7 @@
 	background-color: #fff;
 	border-radius: 0 0 	5px 5px ;
 	text-align: left;
-	height: 200px;
+	height: 40px;
 
 }
 .event-inner h4{

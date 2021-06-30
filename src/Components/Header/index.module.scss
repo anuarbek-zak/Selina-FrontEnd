@@ -1,33 +1,37 @@
-.header{
-  height: 100px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  background-color: antiquewhite;
-}
-.logo{
-  border: none;
-  width: 100px;
-}
-.locationsDropdown{
-  cursor: pointer;
-  position: relative;
-  &:hover .countriesList{
-      display: block;
+header{
+  height: 5vh;
+  padding: 20px 40px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 9px;
+  .logo{
+    width: 70px;
+    outline: none;
   }
-}
-.countriesList{
-  display: none;
-  position: absolute;
-  right: 0;
-  height: 200px;
-  overflow: auto;
-  border: 1px solid #000;
-  background-color: #fff;
-  list-style-type: none;
-  text-align: center;
-  padding: 0 10px;
-  li{
-    padding: 5px;
+  .locationsDropdown{
+    cursor: pointer;
+    position: relative;
+    &:hover .countriesList{
+      display: block;
+    }
+  }
+  .countriesList{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #000;
+    background-color: #fff;
+    list-style-type: none;
+    text-align: center;
+    padding: 0 10px;
+    li{
+      padding: 5px;
+    }
+  }
+  &.black .burger::after,
+  &.black .burger::before,
+  &.black .burger{
+    background: #111;
   }
 }
