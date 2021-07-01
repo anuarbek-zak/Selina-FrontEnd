@@ -5,22 +5,37 @@ import Event from '../../Components/Event'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+const renderEvents = (events) => {
+  return (
+    <div>
+      <h2> Events </h2>
+      <div className={`${styles.events} flex jc-sb`}>
+        {events.map(item => {
+          return <Event key={item.id} item={item}/>
+        })}
+      </div>
+    </div>
+  )
+}
+
+const loadEvents = async (id, setEvents, setLoadingEvents) => {
+  try{
+    setLoadingEvents(true)
+    const response = await fetch('https://events.selinatech.com/events/aggregated/'+id)
+    const data = await response.json()
+    setEvents(data)
+    setLoadingEvents(false)
+  } catch (err) {
+    console.error('Error during fetching data:', err)
+  }
+}
+
 export default function Location({locations}){
   const { id } = useParams();
   const [events, setEvents] = useState([]);
+  const [loadingEvents, setLoadingEvents] = useState(false);
   const [location, setLocation] = useState({});
-  useEffect(() => {
-    const loadLocation = async () => {
-      try{
-        const response = await fetch('https://events.selinatech.com/events/aggregated/'+id)
-        const data = await response.json();
-        setEvents(data)
-      } catch (err) {
-        console.error('Error during fetching data:', err)
-      }
-    }
-    loadLocation()
-  }, [id])
+  const eventsExists = events.length > 0
 
   useEffect(() => {
     setLocation(locations.find(loc => loc.id === id))
@@ -39,20 +54,17 @@ export default function Location({locations}){
         <h4>{location?.currencyCode}</h4>
       </div>
       <Carousel width={'50%'} className={styles.carousel}>
-          {(location?.photos || []).map(photo => (
-            <div>
-              <img src={photo} alt={`Selina ${location.name}`}/>
-            </div>
-          ))}
+        {(location?.photos || []).map(photo => (
+          <div key={photo}>
+            <img src={photo} alt={`Selina ${location.name}`}/>
+          </div>
+        ))}
       </Carousel>
-      <h2> {events.length ? 'Events:' : 'No events :('}</h2>
-      <div className={`${styles.events} flex jc-sb`}>
-        {events.map(item => {
-          return <Event key={item.id} item={item}/>
-        })}
-      </div>
-    
-      
+      {!eventsExists && (<button className={`${styles['glow-on-hover']}`} onClick={() => {loadEvents(id, setEvents, setLoadingEvents)}} type="button">SHOW EVENTS</button>)}
+      {loadingEvents && (
+        <p>Loading...</p>
+      )}
+      {eventsExists > 0 && renderEvents(events)}
     </div>
   )
 }
