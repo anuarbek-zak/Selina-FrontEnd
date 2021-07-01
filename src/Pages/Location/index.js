@@ -2,13 +2,13 @@ import styles from './index.module.scss';
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from 'react'
 import Event from '../../Components/Event'
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 export default function Location({locations}){
   const { id } = useParams();
   const [events, setEvents] = useState([]);
   const [location, setLocation] = useState({});
-  console.log('====Location',locations)
   useEffect(() => {
     const loadLocation = async () => {
       try{
@@ -38,6 +38,13 @@ export default function Location({locations}){
         <h4>{location?.type}</h4>
         <h4>{location?.currencyCode}</h4>
       </div>
+      <Carousel width={'50%'} className={styles.carousel}>
+          {(location?.photos || []).map(photo => (
+            <div>
+              <img src={photo} alt={`Selina ${location.name}`}/>
+            </div>
+          ))}
+      </Carousel>
       <h2> {events.length ? 'Events:' : 'No events :('}</h2>
       <div className={`${styles.events} flex jc-sb`}>
         {events.map(item => {
