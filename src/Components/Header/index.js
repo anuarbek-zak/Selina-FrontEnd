@@ -9,7 +9,7 @@ export default function Header({countries}){
     return Object.keys(countries).map(countryName => {
       return (
       <li key={countryName}>
-        {countryName}
+        <h3>{countryName}</h3>
         <ul>
           {renderLocations(countries[countryName])}
         </ul>
@@ -20,7 +20,7 @@ export default function Header({countries}){
   const renderLocations = (locations) => {
     return locations.map(location => {
       return (
-        <li key={location.id}>
+        <li  key={location.id}>
           <Link to={`/location/${location.id}`}>{location.name}</Link>
         </li>
       )

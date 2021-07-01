@@ -38,7 +38,7 @@ export default function Location({locations}){
         <h4>{location?.type}</h4>
         <h4>{location?.currencyCode}</h4>
       </div>
-      <h2> Events :</h2>
+      <h2> {events.length ? 'Events:' : 'No events :('}</h2>
       <div className={`${styles.events} flex jc-sb`}>
         {events.map(item => {
           return <Event key={item.id} item={item}/>

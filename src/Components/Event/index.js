@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 export default function Event({item}){
   return (
     <div className={styles.event}>
-      <img src={item.images[0]} className="bg-img"/>
+      <div style={{'backgroundImage': `url(${item.images[0]})`}} className={styles['bg-img']}></div>
       <div className={`flex flex-column jc-sb`}>
         <h4 className="">{item.name}</h4>
         <p className="">{item.startDate} - {item.endDate}</p>

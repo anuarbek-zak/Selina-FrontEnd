@@ -1,6 +1,6 @@
 header{
   height: 5vh;
-  padding: 20px 40px;
+  padding: 40px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 9px;
   .logo{
     width: 70px;
@@ -15,24 +15,28 @@ header{
   }
   .countriesList{
     display: none;
+    padding: 0;
     position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 9px;
     z-index: 1;
     right: 0;
-    top: 0;
-    height: 200px;
+    top: 10px;
+    height: 500px;
+    width: 250px;
     overflow: auto;
-    border: 1px solid #000;
+    border-radius: 5px;
     background-color: #fff;
-    list-style-type: none;
-    text-align: center;
     padding: 0 10px;
-    li{
-      padding: 5px;
+    border: 1px solid #ccc;
+    h3{
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
     }
-  }
-  &.black .burger::after,
-  &.black .burger::before,
-  &.black .burger{
-    background: #111;
+    li{
+      list-style-type: none;
+      padding: 10px 5px;
+    }
   }
 }

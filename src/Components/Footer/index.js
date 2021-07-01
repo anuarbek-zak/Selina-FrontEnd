@@ -15,7 +15,7 @@ export default function Footer({locations}){
     <div className={`${styles['footer-big']} flex jc-c`}>
       {randomLocations.map( loc => {
         return (
-        <div className={styles['column']}>
+        <div key={loc.id} className={styles['column']}>
           <h4>
             <Link to={`/location/${loc.id}`}>{loc.name}</Link>
           </h4>
@@ -23,7 +23,6 @@ export default function Footer({locations}){
             <li>About</li>
             <li>Culture and traditions</li>
             <li>Tourism</li>
-            <li>Leader of the Nation</li>
           </ul>
         </div>
         )
