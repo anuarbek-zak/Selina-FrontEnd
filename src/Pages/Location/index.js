@@ -4,11 +4,17 @@ import {useState, useEffect} from 'react'
 import Event from '../../Components/Event'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import DateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker';
 
-const renderEvents = (events) => {
+
+const renderEvents = (events, dateRange, setDateRange) => {
   return (
     <div>
       <h2> Events </h2>
+      <DateTimeRangePicker
+        onChange={setDateRange}
+        value={dateRange}
+      />
       <div className={`${styles.events} flex jc-sb`}>
         {events.map(item => {
           return <Event key={item.id} item={item}/>
@@ -36,6 +42,9 @@ export default function Location({locations}){
   const [loadingEvents, setLoadingEvents] = useState(false);
   const [location, setLocation] = useState({});
   const eventsExists = events.length > 0
+  const today = new Date()
+  const monthAheadFromToday = (new Date()).setMonth((new Date()).getMonth()+1)
+  const [dateRange, setDateRange] = useState([today, monthAheadFromToday]);
 
   useEffect(() => {
     setLocation(locations.find(loc => loc.id === id))
@@ -64,7 +73,7 @@ export default function Location({locations}){
       {loadingEvents && (
         <p>Loading...</p>
       )}
-      {eventsExists > 0 && renderEvents(events)}
+      {eventsExists > 0 && renderEvents(events,dateRange,setDateRange)}
     </div>
   )
 }
