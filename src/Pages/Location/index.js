@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import DateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker';
 
 
-const renderEvents = (events, dateRange, setDateRange) => {
+const renderEventsWithDatePicker = (eventsToShow, dateRange, setDateRange) => {
   return (
     <div>
       <h2> Events </h2>
@@ -16,7 +16,7 @@ const renderEvents = (events, dateRange, setDateRange) => {
         value={dateRange}
       />
       <div className={`${styles.events} flex jc-sb`}>
-        {events.map(item => {
+        {eventsToShow.map(item => {
           return <Event key={item.id} item={item}/>
         })}
       </div>
@@ -24,12 +24,13 @@ const renderEvents = (events, dateRange, setDateRange) => {
   )
 }
 
-const loadEvents = async (id, setEvents, setLoadingEvents) => {
+const loadEvents = async (id, setEvents, setLoadingEvents, setEventsToShow) => {
   try{
     setLoadingEvents(true)
     const response = await fetch('https://events.selinatech.com/events/aggregated/'+id)
     const data = await response.json()
     setEvents(data)
+    setEventsToShow(data)
     setLoadingEvents(false)
   } catch (err) {
     console.error('Error during fetching data:', err)
@@ -39,18 +40,32 @@ const loadEvents = async (id, setEvents, setLoadingEvents) => {
 export default function Location({locations}){
   const { id } = useParams();
   const [events, setEvents] = useState([]);
+  const [eventsToShow, setEventsToShow] = useState(events);
   const [loadingEvents, setLoadingEvents] = useState(false);
   const [location, setLocation] = useState({});
   const eventsExists = events.length > 0
   const today = new Date()
-  const monthAheadFromToday = (new Date()).setMonth((new Date()).getMonth()+1)
-  const [dateRange, setDateRange] = useState([today, monthAheadFromToday]);
+  let monthAhead = new Date();
+  monthAhead.setMonth(today.getMonth()+1)
+  const [dateRange, setDateRange] = useState([today, monthAhead]);
+  
 
   useEffect(() => {
     setLocation(locations.find(loc => loc.id === id))
   }, [locations, id])
 
-  console.log('data',events,location)
+  useEffect(() => {
+    if(events.length>0){
+      const newEvnts = events.filter(evt =>  {
+        return Date.parse(evt.startDateUTC) >= Date.parse(dateRange[0]) && Date.parse(evt.endDateUTC) <= Date.parse(dateRange[1])
+      })
+      setEventsToShow(newEvnts)
+    }
+  }, [dateRange])
+
+  const showLoadBtn = !eventsExists && !loadingEvents;
+
+  
   return (
     <div className={styles.location}>
       <div>
@@ -69,11 +84,11 @@ export default function Location({locations}){
           </div>
         ))}
       </Carousel>
-      {!eventsExists && (<button className={`${styles['glow-on-hover']}`} onClick={() => {loadEvents(id, setEvents, setLoadingEvents)}} type="button">SHOW EVENTS</button>)}
+      {showLoadBtn && (<button className={`${styles['glow-on-hover']}`} onClick={() => {loadEvents(id, setEvents, setLoadingEvents, setEventsToShow)}} type="button">SHOW EVENTS</button>)}
       {loadingEvents && (
         <p>Loading...</p>
       )}
-      {eventsExists > 0 && renderEvents(events,dateRange,setDateRange)}
+      {eventsExists > 0 && renderEventsWithDatePicker(eventsToShow,dateRange,setDateRange)}
     </div>
   )
 }
