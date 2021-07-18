@@ -9,8 +9,8 @@ export default function Event({item}){
         <p>{item.startDate} - {item.endDate}</p>
         <p>{item.description }</p>
         <div className={`${styles['event-inner']} flex jc-sb ai-c`}>
-          <span><img src="https://anuarbek-zak.github.io/projects/Kazakhstan/frontend/assets/img/map.png"/>{item.areasAtLocation[0] || ""}</span>
-          <a className="read-more ">Join to event</a>
+          <span><img src="https://anuarbek-zak.github.io/projects/Kazakhstan/frontend/assets/img/map.png" alt="Selina"/>{item.areasAtLocation[0] || ""}</span>
+          <a href="#" className="read-more ">Join to event</a>
         </div>
       </div>
     </div>
