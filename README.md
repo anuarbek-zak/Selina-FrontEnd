@@ -1,6 +1,6 @@
 # Welcome to my Front-end project for Selina home asignment!
 
-# [https://elastic-jennings-f98649.netlify.app/](Demo) is here
+# [Demo](https://elastic-jennings-f98649.netlify.app/) is here
 
 This project was written by using React and React hooks. Main task and all the bonus tasks were completed. I was trying my best during developing this project!
 
