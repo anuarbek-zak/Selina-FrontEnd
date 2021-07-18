@@ -1,15 +1,15 @@
 
-footer .footer-big{
+.footer-big{
   background-color: #2B3A4D;
   color:#ACACC9;  
   padding: 40px 100px;
 }
 
-footer .footer-big .column{
+.footer-big .column{
   margin-left: 80px;
 }
 
-footer .footer-big h4{ 
+.footer-big h4{ 
   text-transform: uppercase;
   margin-bottom: 20px;
   font-size: 15px;
@@ -19,16 +19,26 @@ footer .footer-big h4{
   }
 }
 
-footer .footer-big ul li{ 
+.footer-big ul li{ 
   margin-bottom: 10px;
     font-size: 13px; 
     cursor: pointer; 
 }
 
-footer .footer-small{ 
+.footer-small{ 
   font-size: 13px;
   color: #d2d2d2;
   background-color: #31363C;
   padding: 15px;
   text-align: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .footer-big{
+    padding: 40px 20px;
+  }
+
+  .footer-big .column{
+    margin-left: 20px;
+  }
 }

@@ -110,10 +110,6 @@ section {
   display: block;
 }
 
-html{
-  min-width: 1180px;
-}
-
 body {
   line-height: 1;
   min-height: 100vh
@@ -201,5 +197,10 @@ body{
 .ai-c{
   -ms-align-items: center;
   align-items: center;
+}
+@media only screen and (max-width: 400px) {
+  .react-datetimerange-picker__button{
+    display: none;
+  }
 }
 

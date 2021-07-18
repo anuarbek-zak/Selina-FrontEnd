@@ -1,6 +1,7 @@
 .event{
 	width: 30%;
-	min-width: 200px;
+	min-width: 250px;
+	margin: 0 auto;
 	margin-bottom: 20px;
 	cursor: pointer;
   transition:.5s 
@@ -36,22 +37,23 @@
 	height: 100%	
 }
 .event-inner{
-	padding: 20px;
+	padding: 10px;
 	padding-bottom: 5px;
 	background-color: #fff;
 	border-radius: 0 0 	5px 5px ;
 	text-align: left;
 	height: 40px;
-
+	color: #b3afaf;
 }
-.event-inner h4{
+.event h4{
 	color: #333;
 	font-size: 22px;
+	margin-top: 15px;
+	font-weight: bold;
 }
-.event-inner p{
-	color: #b3afaf;
-	line-height: 1.7;
-	margin:15px 0 40px;
+.event p{
+	line-height: 1.5;
+	margin: 10px 0;
 }
 .event-inner span{
 	color: #318EF6

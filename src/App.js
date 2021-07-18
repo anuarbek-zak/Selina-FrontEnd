@@ -9,6 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import styles from './App.module.scss'
+import MetaTags from 'react-meta-tags';
 
 function App() {
 
@@ -39,6 +40,11 @@ function App() {
 
   return (
     <div className="App">
+      <MetaTags>
+        <title>Selina</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      </MetaTags>
       <Router>
         <Header countries={countries}/>
         <main className={styles.main}>
