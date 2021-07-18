@@ -1,3 +1,10 @@
+# Welcome to my Front-end project for Selina home asignment!
+
+# [https://elastic-jennings-f98649.netlify.app/](Demo) is here
+
+This project was written by using React and React hooks. Main task and all the bonus tasks were completed. I was trying my best during developing this project!
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
