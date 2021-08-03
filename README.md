@@ -2,7 +2,11 @@
 
 # [Demo](https://elastic-jennings-f98649.netlify.app/) is here
 
-This project was written by using React, React hooks, SCSS and CSS Modules. Main task and all the bonus tasks were completed. I was trying my best during developing this project!
+Backend HW is [here](https://github.com/anuarbek-zak/Selina-Backend)
+
+This project was written by using 
+### React, React hooks, SCSS and CSS Modules.
+Main task and all the bonus tasks were completed. I was trying my best during developing this project!
 
 
 # Getting Started with Create React App
