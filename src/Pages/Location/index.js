@@ -95,7 +95,7 @@ export default function Location({locations}){
   const loadEvents = async () => {
     try{
       setLoadingEventsState(LOADING_STATTES.LOADING)
-      const response = await fetch('https://events.selinatech.com/events/aggregated/'+id)
+      const response = await fetch('https://gw.selinatech.com/events/events/aggregated/'+id)
       const data = await response.json()
       setEvents(data)
       setEventsToShow(data)
