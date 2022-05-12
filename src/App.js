@@ -23,7 +23,7 @@ function App() {
           .then(data => {
             setLocations(data);
             data.forEach((loc) => {
-              const countryName = loc.location.value
+              const countryName = loc.country.name
               if(!countriesWithLocations[countryName]){
                 countriesWithLocations[countryName] = []
               }
