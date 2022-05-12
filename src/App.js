@@ -18,7 +18,7 @@ function App() {
   useEffect(()=>{
     const loadLocations = () => {
       let countriesWithLocations = {}
-        fetch('https://locations.selinatech.com/locations')
+        fetch('https://gw.selinatech.com/locations/api/locations')
           .then(res => res.json())
           .then(data => {
             setLocations(data);
